@@ -4,7 +4,7 @@ import entity.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.nativeTest.BudgetPage;
-import pageObjects.nativeTest.NativePageObject;
+import pageObjects.nativeTest.LoginPageObject;
 import pageObjects.nativeTest.RegistrationPage;
 import properties.MobileDataProvider;
 import setup.BaseTest;
@@ -16,7 +16,7 @@ public class nativeMobileTests extends BaseTest {
             groups = {"native"},
             description = "Make sure that you are on the BudgetActivity page")
     public void RegistrationTest(User user, String budgetActivity) {
-        NativePageObject nativePageObject = (NativePageObject) getPo().getPageObject();
+        LoginPageObject nativePageObject = (LoginPageObject) getPo().getPageObject();
         RegistrationPage registrationPage = nativePageObject.openRegistrationPage();
         registrationPage.registerNewUser(user, getDriver());
         BudgetPage budgetPage = nativePageObject.loginUser(user);

@@ -7,7 +7,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class NativePageObject extends BasePage {
+public class LoginPageObject extends MainPage {
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "email_sign_in_button")
     WebElement signInBtn;
@@ -21,7 +21,7 @@ public class NativePageObject extends BasePage {
     @AndroidFindBy(id = APPLIC_NAME_ID + "login_pwd")
     private WebElement passInput;
 
-    public NativePageObject(AppiumDriver appiumDriver) {
+    public LoginPageObject(AppiumDriver appiumDriver) {
         this.appiumDriver = appiumDriver;
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
     }

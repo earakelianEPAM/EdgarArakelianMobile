@@ -7,13 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.nativeTest.BasePage;
+import pageObjects.nativeTest.MainPage;
 
 import java.util.List;
 
-public class WebPageObject extends BasePage {
+public class WebPageObject extends MainPage {
 
-    @FindBy(xpath = "//div[@aria-level='3']")
+    @FindBy(xpath = "//*[@id='rso']/*")
     private List<WebElement> searchResultList;
 
     @FindBy(xpath = "//input[@name='q']")
@@ -35,18 +35,25 @@ public class WebPageObject extends BasePage {
         return this;
     }
 
-    public WebPageObject searchEpam(String searchStr) {
+    public WebPageObject search(String searchStr) {
         searchField.sendKeys(searchStr);
         searchField.sendKeys(Keys.ENTER);
         new WebDriverWait(appiumDriver, 20).until(
-                wd ->((JavascriptExecutor) wd)
+                wd -> ((JavascriptExecutor) wd)
                         .executeScript("return document.readyState")
                         .equals("complete")
         );
         return this;
     }
 
-    public List<WebElement> getSearchResult() {
-        return searchResultList;
+    public boolean searchResultContainsText(String searchStr) {
+        for (WebElement result : searchResultList) {
+            String text = result.getText();
+            if (text.contains(searchStr)) {
+                System.out.println(text);
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BudgetPage extends BasePage {
+public class BudgetPage extends MainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='BudgetActivity']")
     private WebElement budgetActionBarText;
 

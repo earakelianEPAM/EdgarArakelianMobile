@@ -2,7 +2,7 @@ package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
-import pageObjects.nativeTest.NativePageObject;
+import pageObjects.nativeTest.LoginPageObject;
 import pageObjects.webTest.WebPageObject;
 import setup.IPageObject;
 
@@ -20,7 +20,7 @@ public class PageObject implements IPageObject {
                 somePageObject = new WebPageObject(appiumDriver);
                 break;
             case "native":
-                somePageObject = new NativePageObject(appiumDriver);
+                somePageObject = new LoginPageObject(appiumDriver);
                 break;
             default: throw new Exception("Can't create a page object for "+appType);
         }
