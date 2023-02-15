@@ -1,10 +1,10 @@
 package properties;
 
-public enum PageProperties {
+public enum PageProperty {
+
     BUDGET_ACTIVITY("BudgetActivity"),
     GOOGLE_PAGE("https://google.com"),
     EPAM_SEARCH("EPAM");
-
 
     private String str;
 
@@ -12,7 +12,7 @@ public enum PageProperties {
         return this.str;
     }
 
-    PageProperties(String str) {
+    PageProperty(String str) {
         this.str = str;
     }
 }

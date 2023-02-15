@@ -1,4 +1,4 @@
-package pageObjects.webTest;
+package page_object.web;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.nativeTest.MainPage;
+import page_object.util.Util;
 
 import java.util.List;
 
-public class WebPageObject extends MainPage {
+public class WebPageObject extends Util {
 
     @FindBy(xpath = "//*[@id='rso']/*")
     private List<WebElement> searchResultList;

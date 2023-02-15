@@ -3,13 +3,11 @@ package scenarios;
 import entity.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.nativeTest.BudgetPage;
-import pageObjects.nativeTest.LoginPageObject;
-import pageObjects.nativeTest.RegistrationPage;
-import properties.MobileDataProvider;
-import setup.BaseTest;
+import page_object.native_page.BudgetPage;
+import page_object.native_page.LoginPageObject;
+import page_object.native_page.RegistrationPage;
 
-public class nativeMobileTests extends BaseTest {
+public class nativeMobileTest extends BaseSetting {
 
     @Test(dataProvider = "nativeDataProvider",
             dataProviderClass = MobileDataProvider.class,

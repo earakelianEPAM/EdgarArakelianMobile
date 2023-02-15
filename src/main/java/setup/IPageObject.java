@@ -7,5 +7,4 @@ public interface IPageObject {
     Object getPageObject();
 
     WebElement getWelement(String weName) throws NoSuchFieldException, IllegalAccessException, InstantiationException;
-
 }

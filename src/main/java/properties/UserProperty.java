@@ -1,31 +1,25 @@
-package entity;
+package properties;
+
+import entity.User;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class User {
+public class UserProperty {
 
+    private final String username;
     private final String email;
-    private final String userName;
     private final String password;
 
-    public User() {
+    public UserProperty() {
         Locale locale = new Locale("en", "US");
         ResourceBundle rb = ResourceBundle.getBundle("nativeTest", locale);
-        this.userName = rb.getString("username");
+        this.username = rb.getString("username");
         this.email = rb.getString("email");
         this.password = rb.getString("password");
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
+    public User getUser() {
+        return new User();
     }
 }

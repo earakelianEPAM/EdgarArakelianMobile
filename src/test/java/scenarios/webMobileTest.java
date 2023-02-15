@@ -2,11 +2,9 @@ package scenarios;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.webTest.WebPageObject;
-import properties.MobileDataProvider;
-import setup.BaseTest;
+import page_object.web.WebPageObject;
 
-public class webMobileTests extends BaseTest {
+public class webMobileTest extends BaseSetting {
 
     @Test(dataProvider = "webDataProvider",
             dataProviderClass = MobileDataProvider.class,

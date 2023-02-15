@@ -1,13 +1,15 @@
-package properties;
+package scenarios;
 
+import entity.User;
 import org.testng.annotations.DataProvider;
 
 import java.util.ResourceBundle;
 
 public class MobileDataProvider {
-    private final UserProperties user;
-    private ResourceBundle rbNative;
-    private ResourceBundle rbWeb;
+
+    private final User user;
+    private final ResourceBundle rbNative;
+    private final ResourceBundle rbWeb;
     private static final String nativeTestProperties = "nativeTest";
     private static final String webTestProperties = "webTest";
     private static final String googleUrlProperty = "googleURL";
@@ -15,7 +17,7 @@ public class MobileDataProvider {
     private static final String budgetActivityProperty = "budgetActivity";
 
     public MobileDataProvider() {
-        user = new UserProperties();
+        user = new User();
         rbNative = ResourceBundle.getBundle(nativeTestProperties);
         rbWeb = ResourceBundle.getBundle(webTestProperties);
     }
@@ -30,7 +32,7 @@ public class MobileDataProvider {
     @DataProvider
     public Object[][] nativeDataProvider() {
         return new Object[][] {
-                {user.getUser(), rbNative.getString(budgetActivityProperty)}
+                {user, rbNative.getString(budgetActivityProperty)}
         };
     }
 }
