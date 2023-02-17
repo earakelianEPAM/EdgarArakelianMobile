@@ -8,11 +8,11 @@ import setup.IPageObject;
 
 import java.lang.reflect.Field;
 
-public class PageObject implements IPageObject {
+public class BasePageObject implements IPageObject {
 
     Object somePageObject; // it should be set of web page or EPAM Test App WebElements
 
-    public PageObject(String appType, AppiumDriver appiumDriver) throws Exception {
+    public BasePageObject(String appType, AppiumDriver appiumDriver) throws Exception {
 
         System.out.println("Current app type: "+appType);
         switch(appType){

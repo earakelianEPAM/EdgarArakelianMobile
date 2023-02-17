@@ -8,10 +8,6 @@ public enum PageProperty {
 
     private String str;
 
-    public String getText() {
-        return this.str;
-    }
-
     PageProperty(String str) {
         this.str = str;
     }

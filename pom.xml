@@ -18,7 +18,6 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.7.1</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -30,15 +29,13 @@
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.0</version><configuration><source>8</source><target>8</target></configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -47,15 +44,8 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${project.basedir}/src/test/resources/homework2</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/cloudNativeAndroidTNG.xml</suiteXmlFile>
                     </suiteXmlFiles>
-<!--                    <systemPropertyVariables>-->
-<!--                        &lt;!&ndash;<ts.appium>http://localhost:4723/wd/hub</ts.appium>&ndash;&gt;-->
-<!--                        <ts.appium>https://EPM-TSTF:hvEZWnTzCie9W6LXWzROOb2Idgjueu0dmRQev9pulnsC8h92J1ZPN+imU1oHRRNPMV44q+nQHqucuHuPn70Yvi4g4v5TIw78EEgn2hnSLe7NZ0Fe7+uwf7nw7eOEdzr6anpMF4sy4ygnEpYSEI/NPUiZsXEYTwJB9bDU+3mpSHWAlB3evWwyL3bUYPR6h5gTEaxUMDFdVGBOZt4a4TeWD4cZADdSZ4bkVaqVVq7JUlIgcTixBIVGaCIMt3DtD+XoqgN/+oqkD7Uv1tQUylVxf74sG5kyjTJApDjkZJj/hp3gg2YWE5RRQSIveWk5B1A35zPWBTD4h+CzXMsS3i8azS+bBke/aiEgQFcBBQnZPXzQ5JQOsl4bYkpmbEJ45fJNCSvbLnIYuV0x1U4O3lRlHMnGctqfp5y5iKxsLFaimzeS36dtOqVR237GdfiSZXfVAaMP5ALiFslnhBI3fVCLPqRZyf6cvKG0MuO6xEHnXT7WEVqciFYy5eO/QLsMtUp/1/KsL9dnrlTHi5ZZyi7Iy6T74iDZt1+x4co0UnZbWKjdTTyUCUZauWaJWLeSBJvGQDnybiXVg26dx4hi81CccNdVhjUw0O1Wshxig1S0pefBlI7tjLU7igjm2RPQ5dsl05rzyWadWS9DDD5lFTXpyj8kHIhN/n6jsdIDD52j7TEm3MIXB5OR/VdUqEF9eIi0ZqeKrsL2aAzRieDGApmIew9XYfOS/hJtV/szaDELKQr5nNJwHCaYqHzTl11UnDeNl9f5de9bDuUBduQ/4EV3V9G9uKpDiZ7jgRCX8hej3jZXxnOUVVP7bhuT07bKrKj/606iY8CH83pgDHB03v0Vw1UU+i4PRH2LGdwvBfJIHGgeCSxPmhZzGmw7xF3FAN3NCrxqhjMyh6k2qD+fIoBNPQ2n8uKPaAyLBbjvDW+qNQ@mobilecloud.epam.com/wd/hub</ts.appium>-->
-<!--&lt;!&ndash;                        <ts.appium>https://EPM-TSTF:hvEZWnTzCie9W6LXWzROOb2Idgjueu0dmRQev9pulnsC8h92J1ZPN+imU1oHRRNPMV44q+nQHqucuHuPn70Yvi4g4v5TIw78EEgn2hnSLe7NZ0Fe7+uwf7nw7eOEdzr6anpMF4sy4ygnEpYSEI/NPUiZsXEYTwJB9bDU+3mpSHWAlB3evWwyL3bUYPR6h5gTEaxUMDFdVGBOZt4a4TeWD4cZADdSZ4bkVaqVVq7JUlIgcTixBIVGaCIMt3DtD+XoqgN/+oqkD7Uv1tQUylVxf74sG5kyjTJApDjkZJj/hp3gg2YWE5RRQSIveWk5B1A35zPWBTD4h+CzXMsS3i8azS+bBke/aiEgQFcBBQnZPXzQ5JQOsl4bYkpmbEJ45fJNCSvbLnIYuV0x1U4O3lRlHMnGctqfp5y5iKxsLFaimzeS36dtOqVR237GdfiSZXfVAaMP5ALiFslnhBI3fVCLPqRZyf6cvKG0MuO6xEHnXT7WEVqciFYy5eO/QLsMtUp/1/KsL9dnrlTHi5ZZyi7Iy6T74iDZt1+x4co0UnZbWKjdTTyUCUZauWaJWLeSBJvGQDnybiXVg26dx4hi81CccNdVhjUw0O1Wshxig1S0pefBlI7tjLU7igjm2RPQ5dsl05rzyWadWS9DDD5lFTXpyj8kHIhN/n6jsdIDD52j7TEm3MIXB5OR/VdUqEF9eIi0ZqeKrsL2aAzRieDGApmIew9XYfOS/hJtV/szaDELKQr5nNJwHCaYqHzTl11UnDeNl9f5de9bDuUBduQ/4EV3V9G9uKpDiZ7jgRCX8hej3jZXxnOUVVP7bhuT07bKrKj/606iY8CH83pgDHB03v0Vw1UU+i4PRH2LGdwvBfJIHGgeCSxPmhZzGmw7xF3FAN3NCrxqhjMyh6k2qD+fIoBNPQ2n8uKPaAyLBbjvDW+qNQ@app.mobitru.com/wd/hub</ts.appium>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <ts.appium>https://earakelian:hvEZWnTzCie9W6LXWzROOb2Idgjueu0dmRQev9pulnsC8h92J1ZPN+imU1oHRRNPMV44q+nQHqucuHuPn70Yvi4g4v5TIw78EEgn2hnSLe7NZ0Fe7+uwf7nw7eOEdzr6anpMF4sy4ygnEpYSEI/NPUiZsXEYTwJB9bDU+3mpSHWAlB3evWwyL3bUYPR6h5gTEaxUMDFdVGBOZt4a4TeWD4cZADdSZ4bkVaqVVq7JUlIgcTixBIVGaCIMt3DtD+XoqgN/+oqkD7Uv1tQUylVxf74sG5kyjTJApDjkZJj/hp3gg2YWE5RRQSIveWk5B1A35zPWBTD4h+CzXMsS3i8azS+bBke/aiEgQFcBBQnZPXzQ5JQOsl4bYkpmbEJ45fJNCSvbLnIYuV0x1U4O3lRlHMnGctqfp5y5iKxsLFaimzeS36dtOqVR237GdfiSZXfVAaMP5ALiFslnhBI3fVCLPqRZyf6cvKG0MuO6xEHnXT7WEVqciFYy5eO/QLsMtUp/1/KsL9dnrlTHi5ZZyi7Iy6T74iDZt1+x4co0UnZbWKjdTTyUCUZauWaJWLeSBJvGQDnybiXVg26dx4hi81CccNdVhjUw0O1Wshxig1S0pefBlI7tjLU7igjm2RPQ5dsl05rzyWadWS9DDD5lFTXpyj8kHIhN/n6jsdIDD52j7TEm3MIXB5OR/VdUqEF9eIi0ZqeKrsL2aAzRieDGApmIew9XYfOS/hJtV/szaDELKQr5nNJwHCaYqHzTl11UnDeNl9f5de9bDuUBduQ/4EV3V9G9uKpDiZ7jgRCX8hej3jZXxnOUVVP7bhuT07bKrKj/606iY8CH83pgDHB03v0Vw1UU+i4PRH2LGdwvBfJIHGgeCSxPmhZzGmw7xF3FAN3NCrxqhjMyh6k2qD+fIoBNPQ2n8uKPaAyLBbjvDW+qNQ@app.mobitru.com/wd/hub</ts.appium>&ndash;&gt;-->
-
-<!--                    </systemPropertyVariables>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -74,7 +64,7 @@
         <profile>
             <id>native</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>src/test/resources/nativeTNG.xml</suite.file>
@@ -88,6 +78,43 @@
             </activation>
             <properties>
                 <suite.file>src/test/resources/webTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>native_android_cloud</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudNativeAndroidTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>native_ios_cloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudNativeiosTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>web_android_cloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudWebAndroidTNG.xml</suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>web_android_ios</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudWebiosTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>

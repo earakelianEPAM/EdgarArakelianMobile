@@ -10,11 +10,9 @@ public class User {
     private final String password;
 
     public User() {
-        Locale locale = new Locale("en", "US");
-        ResourceBundle rb = ResourceBundle.getBundle("nativeTest", locale);
-        this.userName = rb.getString("username");
-        this.email = rb.getString("email");
-        this.password = rb.getString("password");
+        this.userName = System.getenv("userName");
+        this.email = System.getenv("email");
+        this.password = System.getenv("password");
     }
 
     public String getEmail() {

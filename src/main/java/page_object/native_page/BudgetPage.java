@@ -8,12 +8,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page_object.util.Util;
+import page_object.util.BaseSettings;
 
-public class BudgetPage extends Util {
+
+public class BudgetPage extends BaseSettings {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='BudgetActivity']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@label='Budget']")
-    private WebElement budgetActionBarText;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Budget']")
+    public static WebElement budgetActionBarText;
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "add_new_expense")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@label='Add']")
@@ -29,7 +30,4 @@ public class BudgetPage extends Util {
                 .until(ExpectedConditions.visibilityOf(addExpenseBtn));
     }
 
-    public String getBudgetPageName() {
-        return budgetActionBarText.getText();
-    }
 }

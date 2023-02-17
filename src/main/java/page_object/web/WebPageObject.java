@@ -7,23 +7,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page_object.util.Util;
+import page_object.util.BaseSettings;
+
 
 import java.util.List;
 
-public class WebPageObject extends Util {
+public class WebPageObject extends BaseSettings {
 
-    @FindBy(xpath = "//*[@id='rso']/*")
+    @FindBy(css = "div[id='rso'] div[role='heading'][aria-level='3']")
     private List<WebElement> searchResultList;
 
     @FindBy(xpath = "//input[@name='q']")
     private WebElement searchField;
 
+    @FindBy(xpath = "//button[@id='W0wltc']")
+    private WebElement acceptAllCookiesButton;
+
     public WebPageObject(AppiumDriver appiumDriver) {
         this.appiumDriver = appiumDriver;
         PageFactory.initElements(appiumDriver, this);
     }
-
 
     public WebPageObject openPage(String url) {
         appiumDriver.navigate().to(url);
@@ -33,6 +36,15 @@ public class WebPageObject extends Util {
                         .equals("complete")
         );
         return this;
+    }
+
+    public WebElement getAcceptAllButton() {
+        return acceptAllCookiesButton;
+    }
+
+    public void clickOnCockiesButton(AppiumDriver appiumDriver) {
+        appiumDriver.executeScript("arguments[0].scrollIntoView(false)", getAcceptAllButton());
+        appiumDriver.executeScript("arguments[0].click();", getAcceptAllButton());
     }
 
     public WebPageObject search(String searchStr) {
@@ -46,14 +58,7 @@ public class WebPageObject extends Util {
         return this;
     }
 
-    public boolean searchResultContainsText(String searchStr) {
-        for (WebElement result : searchResultList) {
-            String text = result.getText();
-            if (text.contains(searchStr)) {
-                System.out.println(text);
-                return true;
-            }
-        }
-        return false;
+    public List<WebElement> getSearchList() {
+        return searchResultList;
     }
 }

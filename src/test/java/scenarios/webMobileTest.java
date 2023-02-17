@@ -1,10 +1,15 @@
 package scenarios;
 
-import org.testng.Assert;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+import page_object.util.BaseSettings;
 import page_object.web.WebPageObject;
 
-public class webMobileTest extends BaseSetting {
+import java.util.List;
+
+public class webMobileTest extends BaseSettings {
+    SoftAssert softAssert = new SoftAssert();
 
     @Test(dataProvider = "webDataProvider",
             dataProviderClass = MobileDataProvider.class,
@@ -13,7 +18,13 @@ public class webMobileTest extends BaseSetting {
     public void WebTest(String googlePageStr, String searchStr) {
         WebPageObject googlePage = (WebPageObject) getPo().getPageObject();
         googlePage.openPage(googlePageStr);
+        googlePage.clickOnCockiesButton(getDriver());
         googlePage.search(searchStr);
-        Assert.assertTrue(googlePage.searchResultContainsText(searchStr), "No results");
-    }
+        List<WebElement> searchResults = googlePage.getSearchList();
+
+        for (WebElement searchItem : searchResults) {
+            System.out.println(searchItem.getText());
+            softAssert.assertTrue(searchItem.getText(). contains(searchStr));
+        }
+        softAssert.assertAll();    }
 }

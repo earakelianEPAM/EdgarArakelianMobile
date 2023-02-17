@@ -7,9 +7,9 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import page_object.util.Util;
+import page_object.util.BaseSettings;
 
-public class LoginPageObject extends Util {
+public class LoginPageObject extends BaseSettings {
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "email_sign_in_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Sign In']")
@@ -17,32 +17,34 @@ public class LoginPageObject extends Util {
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "register_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Register new account']")
-    private WebElement registerBtn;
+    WebElement registerButton;
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "login_email")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value='user@example.com']")
-    private WebElement emailInput;
+    WebElement emailField;
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "login_pwd")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@value='Required']")
-    private WebElement passInput;
+    WebElement passwordField;
 
     public LoginPageObject(AppiumDriver appiumDriver) {
         this.appiumDriver = appiumDriver;
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
     }
 
-    public RegistrationPage openRegistrationPage() {
-        appiumDriver.hideKeyboard();
-        registerBtn.click();
-        return new RegistrationPage(appiumDriver);
+    public void pushRegisterAccountButton () {
+        registerButton.click();
     }
 
-    public BudgetPage loginUser(User user) {
-        emailInput.sendKeys(user.getEmail());
-        passInput.sendKeys(user.getPassword());
-        appiumDriver.hideKeyboard();
+    public void enterEmail (String email) {
+        emailField.sendKeys(email);
+    }
+
+    public void enterPassword (String password) {
+        passwordField.sendKeys(password);
+    }
+
+    public void pushSignInButton() {
         signInBtn.click();
-        return new BudgetPage(appiumDriver);
     }
 }

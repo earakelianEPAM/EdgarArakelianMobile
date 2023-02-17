@@ -7,41 +7,63 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import page_object.util.Util;
+import page_object.util.BaseSettings;
 
-public class RegistrationPage extends Util {
+public class RegistrationPage extends BaseSettings {
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Registration']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Registration']")
+    public static WebElement registrationHeader;
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "registration_email")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value='user@example.com']")
-    private WebElement regEmailInput;
+    WebElement registrationEmailField;
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "registration_username")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value='TimApple']")
-    private WebElement regUserNameInput;
+    WebElement registrationUserNameField;
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "registration_password")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@value='Required']")
-    private WebElement regPassInput;
+    WebElement passwordField;
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "registration_confirm_password")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@value='Repeat please']")
-    private WebElement regRepPassInput;
+    WebElement confirmPasswordField;
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "register_new_account_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Register new account']")
-    private WebElement regButton;
+    WebElement registerNewAccountButton;
+
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@value='0']")
+    WebElement agreementToggle;
 
     public RegistrationPage(AppiumDriver appiumDriver) {
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
     }
 
-    public RegistrationPage registerNewUser(User user, AppiumDriver appiumDriver) {
-        regEmailInput.sendKeys(user.getEmail());
-        regUserNameInput.sendKeys(user.getUserName());
-        regPassInput.sendKeys(user.getPassword());
-        regRepPassInput.sendKeys(user.getPassword());
-        appiumDriver.hideKeyboard();
-        regButton.click();
-        return this;
+    public void enterEmail (String email) {
+        registrationEmailField.sendKeys(email);
+    }
+
+    public void enterUsername (String userName) {
+        registrationUserNameField.sendKeys(userName);
+    }
+
+    public void enterPassword (String password) {
+        passwordField.sendKeys(password);
+    }
+
+    public void enterConfirmPassword (String password) {
+        confirmPasswordField.sendKeys(password);
+    }
+
+    public void pushRegisterButton () {
+        String platformName = (String) getDriver().getCapabilities().getCapability("platformName");
+        if (platformName.equals("iOS")) {
+            agreementToggle.click();
+            registerNewAccountButton.click();
+        }
+        registerNewAccountButton.click();
     }
 }
