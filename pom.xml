@@ -12,24 +12,41 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>7.3.0</version>
+            <version>7.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.1.0</version>
+            <version>7.7.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.20.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.0.0-M5</version>
                 <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${suite.file}</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/homework2</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <ts.appium>http://localhost:4723/wd/hub</ts.appium>
@@ -39,6 +56,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -51,7 +69,7 @@
         <profile>
             <id>native</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <suite.file>src/test/resources/nativeTNG.xml</suite.file>
@@ -61,10 +79,10 @@
         <profile>
             <id>web</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>./src/test/resources/webTNG.xml</suite.file>
+                <suite.file>src/test/resources/webTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
