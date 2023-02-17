@@ -13,7 +13,7 @@ import java.util.List;
 
 public class WebPageObject extends MainPage {
 
-    @FindBy(xpath = "//*[@id='rso']/*")
+    @FindBy(css = "div[id='rso'] div[role='heading'][aria-level='3']")
     private List<WebElement> searchResultList;
 
     @FindBy(xpath = "//input[@name='q']")
@@ -46,14 +46,8 @@ public class WebPageObject extends MainPage {
         return this;
     }
 
-    public boolean searchResultContainsText(String searchStr) {
-        for (WebElement result : searchResultList) {
-            String text = result.getText();
-            if (text.contains(searchStr)) {
-                System.out.println(text);
-                return true;
-            }
-        }
-        return false;
+    public List<WebElement> getSearchList() {
+        return searchResultList;
     }
+
 }
