@@ -1,15 +1,14 @@
 package page_object.native_page;
 
-import entity.User;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import page_object.util.BaseSettings;
+import setup.BaseSettings;
 
-public class RegistrationPage extends BaseSettings {
+public class RegistrationPage extends MainPage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Registration']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Registration']")
@@ -33,33 +32,34 @@ public class RegistrationPage extends BaseSettings {
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "register_new_account_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Register new account']")
-    WebElement registerNewAccountButton;
+    public WebElement registerNewAccountButton;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@value='0']")
-    WebElement agreementToggle;
+    public WebElement agreementToggle;
 
     public RegistrationPage(AppiumDriver appiumDriver) {
         PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
     }
 
-    public void enterEmail (String email) {
+    public void enterEmail(String email) {
         registrationEmailField.sendKeys(email);
     }
 
-    public void enterUsername (String userName) {
+    public void enterUsername(String userName) {
         registrationUserNameField.sendKeys(userName);
     }
 
-    public void enterPassword (String password) {
+    public void enterPassword(String password) {
         passwordField.sendKeys(password);
     }
 
-    public void enterConfirmPassword (String password) {
+    public void enterConfirmPassword(String password) {
         confirmPasswordField.sendKeys(password);
     }
 
-    public void pushRegisterButton () {
-        String platformName = (String) getDriver().getCapabilities().getCapability("platformName");
+    public void pushRegisterButton() {
+
+        String platformName = (String) BaseSettings.getDriver().getCapabilities().getCapability("platformName");
         if (platformName.equals("iOS")) {
             agreementToggle.click();
             registerNewAccountButton.click();

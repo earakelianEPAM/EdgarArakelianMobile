@@ -109,7 +109,7 @@
             </properties>
         </profile>
         <profile>
-            <id>web_android_ios</id>
+            <id>web_ios_cloud</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

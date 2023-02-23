@@ -1,15 +1,13 @@
 package page_object.native_page;
 
-import entity.User;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import page_object.util.BaseSettings;
 
-public class LoginPageObject extends BaseSettings {
+public class LoginPageObject extends MainPage {
 
     @AndroidFindBy(id = APPLIC_NAME_ID + "email_sign_in_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Sign In']")

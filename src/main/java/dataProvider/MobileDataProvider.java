@@ -1,4 +1,4 @@
-package scenarios;
+package dataProvider;
 
 import entity.User;
 import org.testng.annotations.DataProvider;

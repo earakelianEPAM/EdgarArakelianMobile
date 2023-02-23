@@ -7,12 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page_object.util.BaseSettings;
-
+import page_object.native_page.MainPage;
 
 import java.util.List;
 
-public class WebPageObject extends BaseSettings {
+public class WebPageObject extends MainPage {
 
     @FindBy(css = "div[id='rso'] div[role='heading'][aria-level='3']")
     private List<WebElement> searchResultList;

@@ -1,4 +1,4 @@
-package page_object.util;
+package setup;
 import static properties.CloudProperty.*;
 
 import io.appium.java_client.AppiumDriver;
@@ -14,16 +14,14 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import page_object.BasePageObject;
-import setup.IPageObject;
 
 public class BaseSettings {
 
     protected static AppiumDriver appiumDriver; // singleton
     private static IPageObject pageObject;
-    protected final static String APPLIC_NAME_ID = "platkovsky.alexey.epamtestapp:id/";
     WebDriverWait webDriverWait;
 
-    public AppiumDriver getDriver() {
+    public static AppiumDriver getDriver() {
         return appiumDriver;
     }
 

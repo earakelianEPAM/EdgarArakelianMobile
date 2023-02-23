@@ -1,5 +1,6 @@
 package scenarios;
 
+import dataProvider.MobileDataProvider;
 import entity.User;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -8,10 +9,9 @@ import org.testng.asserts.SoftAssert;
 import page_object.native_page.BudgetPage;
 import page_object.native_page.LoginPageObject;
 import page_object.native_page.RegistrationPage;
-import page_object.util.BaseSettings;
+import setup.BaseSettings;
 
 public class nativeMobileTest extends BaseSettings {
-    SoftAssert softAssert = new SoftAssert();
 
     private final String email = System.getenv("email");
     private final String userName = System.getenv("userName");

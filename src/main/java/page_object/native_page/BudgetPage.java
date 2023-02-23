@@ -8,10 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page_object.util.BaseSettings;
 
-
-public class BudgetPage extends BaseSettings {
+public class BudgetPage extends MainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='BudgetActivity']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label='Budget']")
     public static WebElement budgetActionBarText;
