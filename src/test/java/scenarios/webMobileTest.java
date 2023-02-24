@@ -1,11 +1,11 @@
 package scenarios;
 
-import dataProvider.MobileDataProvider;
+import dataprovider.MobileDataProvider;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import setup.BaseSettings;
-import page_object.web.WebPageObject;
+import pages.webpage.WebPageObject;
 
 import java.util.List;
 

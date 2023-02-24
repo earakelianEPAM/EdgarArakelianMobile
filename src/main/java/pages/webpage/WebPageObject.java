@@ -1,17 +1,15 @@
-package page_object.web;
+package pages.webpage;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page_object.native_page.MainPage;
 
 import java.util.List;
 
-public class WebPageObject extends MainPage {
+public class WebPageObject extends WebBasePage {
 
     @FindBy(css = "div[id='rso'] div[role='heading'][aria-level='3']")
     private List<WebElement> searchResultList;
@@ -22,9 +20,8 @@ public class WebPageObject extends MainPage {
     @FindBy(xpath = "//button[@id='W0wltc']")
     private WebElement acceptAllCookiesButton;
 
-    public WebPageObject(AppiumDriver appiumDriver) {
-        this.appiumDriver = appiumDriver;
-        PageFactory.initElements(appiumDriver, this);
+    public WebPageObject (AppiumDriver appiumDriver) {
+        super(appiumDriver);
     }
 
     public WebPageObject openPage(String url) {

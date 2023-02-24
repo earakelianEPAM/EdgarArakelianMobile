@@ -1,11 +1,9 @@
-package page_object.native_page;
+package pages.nativepage;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 public class LoginPageObject extends MainPage {
 
@@ -25,9 +23,8 @@ public class LoginPageObject extends MainPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[@value='Required']")
     WebElement passwordField;
 
-    public LoginPageObject(AppiumDriver appiumDriver) {
-        this.appiumDriver = appiumDriver;
-        PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
+    public LoginPageObject (AppiumDriver appiumDriver) {
+        super(appiumDriver);
     }
 
     public void pushRegisterAccountButton () {

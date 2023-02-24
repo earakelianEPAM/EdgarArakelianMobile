@@ -13,7 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import page_object.BasePageObject;
+import pages.BasePageObject;
 
 public class BaseSettings {
 

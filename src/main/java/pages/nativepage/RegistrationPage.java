@@ -1,11 +1,9 @@
-package page_object.native_page;
+package pages.nativepage;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import setup.BaseSettings;
 
 public class RegistrationPage extends MainPage {
@@ -37,8 +35,8 @@ public class RegistrationPage extends MainPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@value='0']")
     public WebElement agreementToggle;
 
-    public RegistrationPage(AppiumDriver appiumDriver) {
-        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
+    public RegistrationPage (AppiumDriver appiumDriver) {
+        super(appiumDriver);
     }
 
     public void enterEmail(String email) {

@@ -1,4 +1,4 @@
-package dataProvider;
+package dataprovider;
 
 import entity.User;
 import org.testng.annotations.DataProvider;

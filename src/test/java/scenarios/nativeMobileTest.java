@@ -1,14 +1,13 @@
 package scenarios;
 
-import dataProvider.MobileDataProvider;
+import dataprovider.MobileDataProvider;
 import entity.User;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import page_object.native_page.BudgetPage;
-import page_object.native_page.LoginPageObject;
-import page_object.native_page.RegistrationPage;
+import pages.nativepage.BudgetPage;
+import pages.nativepage.LoginPageObject;
+import pages.nativepage.RegistrationPage;
 import setup.BaseSettings;
 
 public class nativeMobileTest extends BaseSettings {
